@@ -6,6 +6,8 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, description: action.payload} // ACTION PAYLOAD VEM DA AÇÃO QUE FOI CRIADA QUE É DISPARADA APARTIR DO EVENTO QUE O USUARIO DIGITOU
         case 'TODO_SEARCHED':
             return { ...state,  list: action.payload.data }
+        case 'TODO_ADDED':
+            return {...state, description: ''}
             default:
                     return state
         }
