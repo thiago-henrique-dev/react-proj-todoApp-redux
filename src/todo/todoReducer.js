@@ -20,7 +20,9 @@ export default (state = INITIAL_STATE, action) => {
     switch(action.type){
         case 'DESCRIPTION_CHANGED':
             return { ...state, description: action.payload} // ACTION PAYLOAD VEM DA AÇÃO QUE FOI CRIADA QUE É DISPARADA APARTIR DO EVENTO QUE O USUARIO DIGITOU
-                default:
+        case 'TODO_SEARCHED':
+            return { ...state,  list: action.payload.data }
+            default:
                     return state
         }
 
