@@ -5,7 +5,7 @@ export default (state = INITIAL_STATE, action) => {
         case 'DESCRIPTION_CHANGED':
             return { ...state, description: action.payload} // ACTION PAYLOAD VEM DA AÇÃO QUE FOI CRIADA QUE É DISPARADA APARTIR DO EVENTO QUE O USUARIO DIGITOU
         case 'TODO_SEARCHED':
-            return { ...state,  list: action.payload.data }
+            return { ...state,  list: action.payload }
         case 'TODO_CLEAR':
             return {...state, description: ''}
             default:

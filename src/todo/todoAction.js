@@ -10,8 +10,15 @@ export const changeDescription = event => ({
 // BUSCAR OS SERVIÇOS NO BACKEND
 
 export const search = () => {
-    const request = axios.get(`${URL}?sort=-createdAt`)
-    return { type: 'TODO_SEARCHED', payload: request }
+        
+    return (dispatch, getState) => {
+        const description = getState().todo.description
+        const search = description ? `&description__regex=/${description}/` : '' 
+        const request = axios.get(`${URL}?sort=-createdAt${search}`)
+            .then(resp => dispatch({type: 'TODO_SEARCHED', payload: resp.data}))
+    }
+
+    
 }
 
 
@@ -46,5 +53,5 @@ export const remove = (todo) => {
 }
 
 export const clear = () => {
-    return { type: 'TODO_CLEAR'}
+    return [{ type: 'TODO_CLEAR'}, search()]
 }
